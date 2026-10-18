@@ -103,7 +103,7 @@ def extract_secret_from_image(stego_image_path: str, passkey: Optional[str] = No
     header_bits_needed = header_size * 8
 
     if total_available_bits < header_bits_needed:
-        raise ValueError("Image is too small to contain an AegisVault steganography header.")
+        raise ValueError("Image is too small to contain a Kyberon steganography header.")
 
     raw_bytes = img.tobytes()
 
@@ -121,7 +121,7 @@ def extract_secret_from_image(stego_image_path: str, passkey: Optional[str] = No
         raise ValueError("Could not parse steganography header.") from e
 
     if magic != STEG_MAGIC:
-        raise ValueError("No AegisVault steganographic data found in this image.")
+        raise ValueError("No Kyberon steganographic data found in this image.")
 
     if payload_len <= 0 or payload_len > (total_available_bits // 8):
         raise ValueError("Invalid embedded payload length.")

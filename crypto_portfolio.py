@@ -72,7 +72,7 @@ def fetch_live_btc_balance(address: str) -> float:
     safe_addr = urllib.parse.quote(addr, safe="")
     url = f"https://blockchain.info/q/addressbalance/{safe_addr}"
     try:
-        req = urllib.request.Request(url, headers={"User-Agent": "AegisVault/4.1"})
+        req = urllib.request.Request(url, headers={"User-Agent": "Kyberon/4.1"})
         with urllib.request.urlopen(req, timeout=4.0) as resp:
             if resp.status == 200:
                 satoshis = int(resp.read().decode())
@@ -88,7 +88,7 @@ def fetch_live_prices() -> Dict[str, Dict[str, float]]:
     prices = dict(DEFAULT_PRICES)
 
     try:
-        req = urllib.request.Request(url, headers={"User-Agent": "AegisVault/4.0"})
+        req = urllib.request.Request(url, headers={"User-Agent": "Kyberon/4.1"})
         with urllib.request.urlopen(req, timeout=3.5) as response:
             if response.status == 200:
                 data = json.loads(response.read().decode())

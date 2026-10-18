@@ -1,15 +1,15 @@
-# 🛡️ AegisVault v4.1.0 — Zero-Trust, Post-Quantum Cold Storage & Air-Gapped Privacy Workstation
+# 🛡️ Kyberon v4.1.0 — Zero-Trust, Post-Quantum Cold Storage & Air-Gapped Privacy Workstation
 
-[![Version](https://img.shields.io/badge/Version-4.1.0-blue?style=for-the-badge)](https://github.com/yiitpepek/AegisVault/releases)
+[![Version](https://img.shields.io/badge/Version-4.1.0-blue?style=for-the-badge)](https://github.com/yiitpepek/Kyberon/releases)
 [![Python 3.11+](https://img.shields.io/badge/Python-3.11%2B-3776AB?style=for-the-badge&logo=python&logoColor=white)](https://www.python.org/)
 [![Cipher](https://img.shields.io/badge/Cipher-AES--256--GCM%20(NIST%20SP%20800--38D)-10b981?style=for-the-badge)](https://csrc.nist.gov/publications/detail/sp/800-38d/final)
 [![KDF](https://img.shields.io/badge/KDF-scrypt%20(RFC%207914%20%2F%20BIP--38)-f59e0b?style=for-the-badge)](https://datatracker.ietf.org/doc/html/rfc7914)
 [![Audit](https://img.shields.io/badge/Security%20Audit-22%2F22%20Remediated%20(v4.1.0)-0284c7?style=for-the-badge)](#-security-audit--acknowledgments-v410-hardening)
 [![License: MIT](https://img.shields.io/badge/License-MIT-8b5cf6?style=for-the-badge)](LICENSE)
 
-**AegisVault** is an open-source, zero-trust cryptographic workstation engineered for **cold-storage secret management**, **dual-slot deniable encryption**, **air-gapped optical/steganographic transport**, and **Ed25519-authenticated end-to-end encrypted (E2EE) communications**.
+**Kyberon** is an open-source, zero-trust cryptographic workstation engineered for **cold-storage secret management**, **dual-slot deniable encryption**, **air-gapped optical/steganographic transport**, and **Ed25519-authenticated end-to-end encrypted (E2EE) communications**.
 
-Built around **NIST SP 800-38D (AES-256-GCM)**, **RFC 7914 (`scrypt`)**, **Ed25519 (RFC 8032)**, **Fujisaki-Okamoto IND-CCA2 Post-Quantum Hybrid KEM (`X25519 + Ring-LWE`)**, and **Bitcoin BIP-38 / BIP-39**, AegisVault v4.1.0 incorporates comprehensive security hardening following an independent white-box cryptographic audit.
+Built around **NIST SP 800-38D (AES-256-GCM)**, **RFC 7914 (`scrypt`)**, **Ed25519 (RFC 8032)**, **Fujisaki-Okamoto IND-CCA2 Post-Quantum Hybrid KEM (`X25519 + Ring-LWE`)**, and **Bitcoin BIP-38 / BIP-39**, Kyberon v4.1.0 incorporates comprehensive security hardening following an independent white-box cryptographic audit.
 
 ---
 
@@ -29,9 +29,9 @@ Built around **NIST SP 800-38D (AES-256-GCM)**, **RFC 7914 (`scrypt`)**, **Ed255
 
 ## 🔒 Security Audit & Acknowledgments (v4.1.0 Hardening)
 
-We extend our sincere gratitude to independent security researcher **[@taygun08](https://github.com/taygun08)** for conducting an exhaustive, 22-finding white-box cryptographic and architectural security audit of AegisVault v4.0.0 (`V-01..V-20`, `W-01`, `W-02`) complete with 18 reproducible Proof-of-Concept (PoC) scripts ([PR #1](https://github.com/yiitpepek/AegisVault/pull/1)).
+We extend our sincere gratitude to independent security researcher **[@taygun08](https://github.com/taygun08)** for conducting an exhaustive, 22-finding white-box cryptographic and architectural security audit of Kyberon v4.0.0 (`V-01..V-20`, `W-01`, `W-02`) complete with 18 reproducible Proof-of-Concept (PoC) scripts ([PR #1](https://github.com/yiitpepek/Kyberon/pull/1)).
 
-All **22 findings** have been addressed and verified in **AegisVault v4.1.0**:
+All **22 findings** have been addressed and verified in **Kyberon v4.1.0**:
 
 | Finding ID | Audit Discovery | v4.1.0 Remediation Summary |
 | :--- | :--- | :--- |
@@ -144,10 +144,10 @@ Each `.mvat` file consists of two newline-delimited Base64 `MVAULT` capsules (Sl
 
 ## 🛡️ Threat Model & Explicit Security Boundaries
 
-To provide transparent, verifiable security guarantees, AegisVault distinguishes between **offline cryptographic guarantees** and **interactive application-layer defenses**:
+To provide transparent, verifiable security guarantees, Kyberon distinguishes between **offline cryptographic guarantees** and **interactive application-layer defenses**:
 
 1. **Offline Adversary (Stolen `.mvat` Container / Disk Image — `V-01`):**
-   * When an attacker extracts a `.mvat` file and attacks it offline (e.g., calling `MilitaryVault.decrypt()` directly or using custom GPU rigs without running the AegisVault GUI), interactive policies (rate-limiting, Scorched-Earth auto-wipe, Dead-Man's Switch) are **not** in the execution path.
+   * When an attacker extracts a `.mvat` file and attacks it offline (e.g., calling `MilitaryVault.decrypt()` directly or using custom GPU rigs without running the Kyberon GUI), interactive policies (rate-limiting, Scorched-Earth auto-wipe, Dead-Man's Switch) are **not** in the execution path.
    * **Offline protection** relies strictly on:
      1. **`scrypt` Memory-Hardness** ($N=32768, r=8, p=1 \rightarrow 32\text{ MB RAM}$ per guess),
      2. **512-Bit CSPRNG 2FA Keyfile (`.akey`)** stored on a separate physical USB token (adds 256 bits of `SHA3-256` entropy to the KDF input), and
@@ -165,7 +165,7 @@ To provide transparent, verifiable security guarantees, AegisVault distinguishes
 ## 📂 Repository Structure
 
 ```text
-AegisVault/
+Kyberon/
 ├── app.py                # Main CustomTkinter GUI, fail-closed POST enforcement & panic lock
 ├── military_vault.py     # Core AES-256-GCM + scrypt AEAD cryptographic engine & ctypes buffer zeroizer
 ├── vault_storage.py      # Dual-slot deniable container, constant-work unlock, fail-closed HMAC state
@@ -186,15 +186,15 @@ AegisVault/
 ## ⚙️ Installation, Usage & Compilation
 
 ### Option 1: Standalone Windows Executable (Zero Dependencies)
-Download the latest `AegisVault.exe` from the [**GitHub Releases**](https://github.com/yiitpepek/AegisVault/releases) page and launch directly:
+Download the latest `Kyberon.exe` from the [**GitHub Releases**](https://github.com/yiitpepek/Kyberon/releases) page and launch directly:
 ```powershell
-.\AegisVault.exe
+.\Kyberon.exe
 ```
 
 ### Option 2: Run from Python Source
 ```bash
-git clone https://github.com/yiitpepek/AegisVault.git
-cd AegisVault
+git clone https://github.com/yiitpepek/Kyberon.git
+cd Kyberon
 pip install -r requirements.txt
 python app.py
 ```
@@ -202,7 +202,7 @@ python app.py
 ### Option 3: Compile Standalone `.exe` via PyInstaller
 ```powershell
 pip install pyinstaller -r requirements.txt
-pyinstaller --noconsole --onefile --clean --name "AegisVault" --collect-all customtkinter --collect-all paho --collect-all qrcode --collect-all cv2 --collect-all PIL app.py
+pyinstaller --noconsole --onefile --clean --name "Kyberon" --collect-all customtkinter --collect-all paho --collect-all qrcode --collect-all cv2 --collect-all PIL app.py
 ```
 
 ---

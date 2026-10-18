@@ -1,5 +1,5 @@
 """
-AegisVault Internationalization (i18n) Module
+Kyberon Internationalization (i18n) Module
 Supported Languages: Turkish (tr), English (en), Russian (ru)
 """
 
@@ -12,7 +12,7 @@ LANGUAGES = {
 TRANSLATIONS = {
     "tr": {
         # App Header & Navigation
-        "app_title": "AegisVault 4.1.0 - Zero-Trust & Post-Quantum Kripto İstasyonu",
+        "app_title": "Kyberon 4.1.0 - Zero-Trust & Post-Quantum Kripto İstasyonu",
         "tagline": "AES-256-GCM + scrypt (BIP-38) Destekli Güvenlik Kasası",
         "status_active": "● AES-256-GCM | AKTİF",
         "status_decoy": "● AES-256-GCM | AKTİF",
@@ -77,7 +77,7 @@ TRANSLATIONS = {
         "btn_suggest_pass": "🎲 Yüksek Entropili Parola Öner",
         "btn_create_vault": "KASAYI OLUŞTUR VE BAŞLAT",
         "btn_back_profiles": "← Mevcut Profillere Dön",
-        "unlock_title": "🔒 Aegis Vault Kilitli",
+        "unlock_title": "🔒 Kyberon Kilitli",
         "unlock_desc": "AES-256-GCM ile şifrelenmiş kullanıcı kasası seçildi.\nErişmek için belirlediğiniz parolayı girin.",
         "unlock_btn": "KASANIN KİLİDİNİ AÇ",
         
@@ -134,7 +134,7 @@ TRANSLATIONS = {
         "chat_status_connecting": "🟡 Küresel ağa bağlanılıyor (Türkiye ↔ Dünya)...",
         "chat_status_connected": "🟢 Odaya Bağlanıldı: '{room}' | AES-256-GCM Şifreleme Aktif!",
         "chat_status_left": "🔴 Sohbet odası bağlantısı kesildi.",
-        "chat_invite_template": "🛡️ AegisVault ZK Güvenli Sohbet Daveti\n━━━━━━━━━━━━━━━━━━━━━\n📡 Oda Adı: {room}\n🔑 Oda Şifresi: {key}\n━━━━━━━━━━━━━━━━━━━━━\n(AegisVault uygulamasında bu bilgileri girip 'Odaya Bağlan' butonuna basın).",
+        "chat_invite_template": "🛡️ Kyberon ZK Güvenli Sohbet Daveti\n━━━━━━━━━━━━━━━━━━━━━\n📡 Oda Adı: {room}\n🔑 Oda Şifresi: {key}\n━━━━━━━━━━━━━━━━━━━━━\n(Kyberon uygulamasında bu bilgileri girip 'Odaya Bağlan' butonuna basın).",
         "chat_alert_room_ready_title": "Oda Hazır",
         "chat_alert_room_ready_msg": "🎲 Yeni Güvenli Oda ve Şifreleme Anahtarı Üretildi!\n\nOda Adı: {room}\nOda Şifresi: {key}\n\nŞimdi '📋 Daveti Kopyala' butonuna basarak arkadaşınıza gönderebilirsiniz.",
         "chat_alert_invite_copied_title": "Kopyalandı",
@@ -231,7 +231,7 @@ TRANSLATIONS = {
     
     "en": {
         # App Header & Navigation
-        "app_title": "AegisVault 4.1.0 - Zero-Trust Cryptographic Suite & P2P",
+        "app_title": "Kyberon 4.1.0 - Zero-Trust Cryptographic Suite & P2P",
         "tagline": "AES-256-GCM + scrypt (BIP-38) Encrypted Vault",
         "status_active": "● AES-256-GCM | ACTIVE",
         "status_decoy": "● AES-256-GCM | ACTIVE",
@@ -296,7 +296,7 @@ TRANSLATIONS = {
         "btn_suggest_pass": "🎲 Suggest High-Entropy Password",
         "btn_create_vault": "CREATE AND INITIALIZE VAULT",
         "btn_back_profiles": "← Back to Existing Profiles",
-        "unlock_title": "🔒 Aegis Vault Locked",
+        "unlock_title": "🔒 Kyberon Locked",
         "unlock_desc": "AES-256-GCM encrypted user vault selected.\nEnter your master password to unlock.",
         "unlock_btn": "UNLOCK VAULT",
         
@@ -353,7 +353,7 @@ TRANSLATIONS = {
         "chat_status_connecting": "🟡 Connecting to global relay (Turkey ↔ Worldwide)...",
         "chat_status_connected": "🟢 Connected to Room: '{room}' | AES-256-GCM Tunnel Active!",
         "chat_status_left": "🔴 Disconnected from chat room.",
-        "chat_invite_template": "🛡️ AegisVault ZK Encrypted Chat Invite\n━━━━━━━━━━━━━━━━━━━━━\n📡 Room Name: {room}\n🔑 Room Key: {key}\n━━━━━━━━━━━━━━━━━━━━━\n(Enter these credentials in AegisVault and click 'Connect to Room').",
+        "chat_invite_template": "🛡️ Kyberon ZK Encrypted Chat Invite\n━━━━━━━━━━━━━━━━━━━━━\n📡 Room Name: {room}\n🔑 Room Key: {key}\n━━━━━━━━━━━━━━━━━━━━━\n(Enter these credentials in Kyberon and click 'Connect to Room').",
         "chat_alert_room_ready_title": "Room Ready",
         "chat_alert_room_ready_msg": "🎲 New Secure Room & Tactical Key Generated!\n\nRoom Name: {room}\nRoom Key: {key}\n\nNow click '📋 Copy Room Invite' to send credentials to your peer.",
         "chat_alert_invite_copied_title": "Copied",
@@ -450,7 +450,7 @@ TRANSLATIONS = {
     
     "ru": {
         # App Header & Navigation
-        "app_title": "AegisVault 4.1.0 - Военная Безопасность и Криптосистема",
+        "app_title": "Kyberon 4.1.0 - Военная Безопасность и Криптосистема",
         "tagline": "Шифрованное хранилище AES-256-GCM + scrypt (BIP-38)",
         "status_active": "● AES-256-GCM | АКТИВНО",
         "status_decoy": "● AES-256-GCM | АКТИВНО",
@@ -515,7 +515,7 @@ TRANSLATIONS = {
         "btn_suggest_pass": "🎲 Сгенерировать военный пароль",
         "btn_create_vault": "СОЗДАТЬ ХРАНИЛИЩЕ",
         "btn_back_profiles": "← К существующим профилям",
-        "unlock_title": "🔒 Aegis Vault Заблокирован",
+        "unlock_title": "🔒 Kyberon Заблокирован",
         "unlock_desc": "Выбран зашифрованный профиль.\nВведите пароль для разблокировки.",
         "unlock_btn": "РАЗБЛОКИРОВАТЬ",
         
@@ -572,7 +572,7 @@ TRANSLATIONS = {
         "chat_status_connecting": "🟡 Подключение к глобальной сети (Турция ↔ Весь мир)...",
         "chat_status_connected": "🟢 Подключено к комнате: '{room}' | Шифрование AES-256-GCM активно!",
         "chat_status_left": "🔴 Вы вышли из комнаты чата.",
-        "chat_invite_template": "🛡️ AegisVault Военное Безопасное Приглашение\n━━━━━━━━━━━━━━━━━━━━━\n📡 Имя комнаты: {room}\n🔑 Пароль комнаты: {key}\n━━━━━━━━━━━━━━━━━━━━━\n(Введите эти данные в AegisVault и нажмите 'Войти в комнату').",
+        "chat_invite_template": "🛡️ Kyberon Военное Безопасное Приглашение\n━━━━━━━━━━━━━━━━━━━━━\n📡 Имя комнаты: {room}\n🔑 Пароль комнаты: {key}\n━━━━━━━━━━━━━━━━━━━━━\n(Введите эти данные в Kyberon и нажмите 'Войти в комнату').",
         "chat_alert_room_ready_title": "Комната готова",
         "chat_alert_room_ready_msg": "🎲 Создана защищенная комната и военный ключ!\n\nИмя комнаты: {room}\nПароль комнаты: {key}\n\nНажмите '📋 Скопировать приглашение', чтобы отправить собеседнику.",
         "chat_alert_invite_copied_title": "Скопировано",

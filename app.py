@@ -1,5 +1,5 @@
 """
-Aegis Vault 4.1.0 - Zero-Trust, Post-Quantum Cryptographic Suite & Secure P2P Ecosystem
+Kyberon 4.1.0 - Zero-Trust, Post-Quantum Cryptographic Suite & Secure P2P Ecosystem
 Features:
 1. Multi-User Profiles (Isolated credentials and encrypted storage per user/machine)
 2. Hardware-Bound Profiles (Hardware fingerprint binding - vault cannot be opened on other PCs)
@@ -44,13 +44,13 @@ ctk.set_appearance_mode("Dark")
 ctk.set_default_color_theme("blue")
 
 
-class AegisVaultApp(ctk.CTk):
+class KyberonApp(ctk.CTk):
     INACTIVITY_TIMEOUT = 120  # 2 minutes auto-lock timeout
 
     def __init__(self):
         super().__init__()
 
-        self.title("AegisVault 4.1.0 - Zero-Trust Cryptographic Suite & P2P")
+        self.title("Kyberon 4.1.0 - Zero-Trust Cryptographic Suite & P2P")
         self.geometry("1120x760")
         self.minsize(980, 660)
 
@@ -306,7 +306,7 @@ class AegisVaultApp(ctk.CTk):
         def pick_setup_keyfile():
             fpath = filedialog.askopenfilename(
                 title=get_text("keyfile_select_btn"),
-                filetypes=[("Aegis 2FA Keyfile", "*.akey"), ("All Files", "*.*")]
+                filetypes=[("Kyberon 2FA Keyfile", "*.kkey;*.akey"), ("All Files", "*.*")]
             )
             if fpath:
                 self.selected_keyfile_path = fpath
@@ -318,8 +318,8 @@ class AegisVaultApp(ctk.CTk):
         def generate_new_keyfile():
             dest = filedialog.asksaveasfilename(
                 defaultextension=".akey",
-                initialfile="aegis_2fa_token.akey",
-                filetypes=[("Aegis 2FA Keyfile", "*.akey")],
+                initialfile="kyberon_2fa_token.kkey",
+                filetypes=[("Kyberon 2FA Keyfile", "*.kkey;*.akey")],
                 title=get_text("keyfile_gen_btn")
             )
             if dest:
@@ -510,7 +510,7 @@ class AegisVaultApp(ctk.CTk):
         def pick_unlock_keyfile():
             fpath = filedialog.askopenfilename(
                 title=get_text("keyfile_select_btn"),
-                filetypes=[("Aegis 2FA Keyfile", "*.akey"), ("All Files", "*.*")]
+                filetypes=[("Kyberon 2FA Keyfile", "*.kkey;*.akey"), ("All Files", "*.*")]
             )
             if fpath:
                 self.selected_keyfile_path = fpath
@@ -827,10 +827,10 @@ class AegisVaultApp(ctk.CTk):
                     if not pinned_sha256:
                         messagebox.showerror(
                             "Update Rejected (V-10 Supply-Chain Shield)",
-                            f"AegisVault v{latest_ver} was found, but its release metadata does not include a pinned 64-hex SHA-256 digest.\nUnsigned/unverified binary execution blocked."
+                            f"Kyberon v{latest_ver} was found, but its release metadata does not include a pinned 64-hex SHA-256 digest.\nUnsigned/unverified binary execution blocked."
                         )
                         return
-                    if messagebox.askyesno("Update Available", f"AegisVault v{latest_ver} is available!\nSHA-256: {pinned_sha256[:16]}...\n\n{notes}\n\nDownload and install verified binary now?"):
+                    if messagebox.askyesno("Update Available", f"Kyberon v{latest_ver} is available!\nSHA-256: {pinned_sha256[:16]}...\n\n{notes}\n\nDownload and install verified binary now?"):
                         threading.Thread(
                             target=lambda: updater.apply_executable_update(down_url, expected_sha256=pinned_sha256),
                             daemon=True
@@ -1094,11 +1094,11 @@ class AegisVaultApp(ctk.CTk):
             messagebox.showerror("Error", "Vault file does not exist on disk!")
             return
 
-        default_name = f"AegisVault_Backup_{self.selected_profile}_{time.strftime('%Y%m%d_%H%M%S')}.mvat"
+        default_name = f"Kyberon_Backup_{self.selected_profile}_{time.strftime('%Y%m%d_%H%M%S')}.mvat"
         dest = filedialog.asksaveasfilename(
             initialfile=default_name,
             defaultextension=".mvat",
-            filetypes=[("AegisVault Backup", "*.mvat"), ("All Files", "*.*")],
+            filetypes=[("Kyberon Vault Backup", "*.mvat"), ("All Files", "*.*")],
             title=get_text("vault_backup_title")
         )
         if not dest:
@@ -1117,7 +1117,7 @@ class AegisVaultApp(ctk.CTk):
         """Restores or imports a vault profile from a user-selected .mvat backup."""
         fpath = filedialog.askopenfilename(
             title=get_text("vault_restore_title"),
-            filetypes=[("AegisVault Backup", "*.mvat"), ("All Files", "*.*")]
+            filetypes=[("Kyberon Vault Backup", "*.mvat"), ("All Files", "*.*")]
         )
         if not fpath:
             return
@@ -1136,7 +1136,7 @@ class AegisVaultApp(ctk.CTk):
                 can_decrypt_with_current = False
 
             base_name = os.path.splitext(os.path.basename(fpath))[0]
-            clean_name = base_name.replace("AegisVault_Backup_", "").replace("AegisVault_", "")
+            clean_name = base_name.replace("Kyberon_Backup_", "").replace("Kyberon_", "").replace("Kyberon_Backup_", "").replace("Kyberon_", "")
 
             if can_decrypt_with_current:
                 v_file, d_file = vault_storage.get_profile_files(self.selected_profile)
@@ -1683,7 +1683,7 @@ class AegisVaultApp(ctk.CTk):
         ctrl_row2.pack(fill="x", padx=15, pady=(2, 10))
 
         def gen_random_room():
-            prefix = secrets.choice(["tactical-line", "som-unit", "aegis-room", "delta-team", "phoenix-link"])
+            prefix = secrets.choice(["tactical-line", "som-unit", "kyberon-room", "delta-team", "phoenix-link"])
             num = secrets.randbelow(9000) + 1000
             rand_room = f"{prefix}-{num}"
             rand_key = secrets.token_urlsafe(12)
@@ -2175,7 +2175,7 @@ class AegisVaultApp(ctk.CTk):
                 ("🛡️ AES-256-GCM Neden Endüstri ve Devlet Standardıdır?", 
                  "AES-256, ABD Ulusal Güvenlik Ajansı (NSA) tarafından 'Top Secret' düzeyindeki devlet sırlarını korumak için onaylanan CNSA Suite standardıdır. GCM (Galois/Counter Mode) modu ise şifreli metinle birlikte 128-bitlik bir doğrulama etiketi (Auth Tag) üretir. Dosyadaki tek bir harf veya bit değiştirilse dahi sistem bunu fark eder ve işlemi iptal eder."),
                 ("🔒 scrypt ve GPU Brute-Force Direnci", 
-                 "Standart SHA-256 veya MD5 algoritmaları bellek kullanmaz; bu yüzden GPU çiftlikleriyle saniyede milyarlarca parola denenebilir. AegisVault'ta kullanılan 'scrypt' algoritması her denemede ~32 MB RAM ayrılmasını zorunlu kılar; GPU'lar bellek darboğazına girer ve kaba kuvvet saldırısı imkansız hale gelir."),
+                 "Standart SHA-256 veya MD5 algoritmaları bellek kullanmaz; bu yüzden GPU çiftlikleriyle saniyede milyarlarca parola denenebilir. Kyberon'da kullanılan 'scrypt' algoritması her denemede ~32 MB RAM ayrılmasını zorunlu kılar; GPU'lar bellek darboğazına girer ve kaba kuvvet saldırısı imkansız hale gelir."),
                 ("🧩 Shamir's Secret Sharing (SSS) Nedir?", 
                  "Bir sırrı N parçaya böler ve K tanesi bir araya gelmeden çözülmesini matematiksel olarak imkansız kılar. 3-of-5 sisteminde oluşturulan parçalar farklı yerlere dağıtılabilir; yangın veya hırsızlık durumunda 2 parça yok olsa bile paranız güvendedir."),
                 ("🎭 Tehdit Parolası (Duress Password / Plausible Deniability)", 
@@ -2187,7 +2187,7 @@ class AegisVaultApp(ctk.CTk):
                 ("🛡️ Why is AES-256-GCM the Gold Standard for Encryption?",
                  "AES-256 is certified by the NSA CNSA Suite for protecting Top Secret state secrets. The Galois/Counter Mode (GCM) computes a 128-bit authentication tag alongside the ciphertext. If even a single bit in the file is modified or tampered with, decryption instantly aborts with an integrity fault."),
                 ("🔒 scrypt & GPU Brute-Force Resistance",
-                 "Standard hashes like SHA-256 require no memory, allowing GPU clusters to attempt billions of passwords per second. AegisVault utilizes scrypt with memory-hard parameters (~32 MB RAM per attempt), paralyzing GPU/ASIC brute-force dictionary attacks."),
+                 "Standard hashes like SHA-256 require no memory, allowing GPU clusters to attempt billions of passwords per second. Kyberon utilizes scrypt with memory-hard parameters (~32 MB RAM per attempt), paralyzing GPU/ASIC brute-force dictionary attacks."),
                 ("🧩 What is Shamir's Secret Sharing (SSS)?",
                  "Invented by cryptographer Adi Shamir, SSS splits a cryptographic secret into N shares such that any K threshold must unite to reconstruct it. In a 3-of-5 setup, losing or leaking 2 shares compromises zero information."),
                 ("🎭 Duress Password & Plausible Deniability",
@@ -2199,7 +2199,7 @@ class AegisVaultApp(ctk.CTk):
                 ("🛡️ Почему AES-256-GCM — военный стандарт?",
                  "AES-256 сертифицирован АНБ США для защиты данных уровня 'Top Secret'. Режим GCM создает 128-битный аутентификационный тег. Изменение хотя бы одного бита приводит к немедленной блокировке расшифровки."),
                 ("🔒 scrypt и защита от GPU-атак",
-                 "Стандартные хеши не требуют памяти, что позволяет фермам GPU перебирать миллиарды паролей. scrypt в AegisVault требует ~32 МБ оперативной памяти на каждую попытку, парализуя перебор."),
+                 "Стандартные хеши не требуют памяти, что позволяет фермам GPU перебирать миллиарды паролей. scrypt в Kyberon требует ~32 МБ оперативной памяти на каждую попытку, парализуя перебор."),
                 ("🧩 Разделение секрета Шамира (SSS)",
                  "Математически разделяет сид-фразу на N долей, требуя K долей для восстановления. При схеме 3 из 5 потеря или утечка 2 долей не раскрывает абсолютно ничего."),
                 ("🎭 Пароль под принуждением (Duress Mode)",
@@ -2327,5 +2327,5 @@ class AegisVaultApp(ctk.CTk):
 
 
 if __name__ == "__main__":
-    app = AegisVaultApp()
+    app = KyberonApp()
     app.mainloop()

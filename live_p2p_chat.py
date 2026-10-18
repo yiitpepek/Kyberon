@@ -89,10 +89,10 @@ def derive_zk_topic(room_key: str, room_name: str) -> str:
     hardened_key = kdf.derive(clean_key.encode("utf-8"))
     blind_id = hmac.new(
         hardened_key,
-        f"AEGIS-ZK-ROOM-v4:{clean_room}".encode("utf-8"),
+        f"KYBERON-ZK-ROOM-v4:{clean_room}".encode("utf-8"),
         hashlib.sha256
     ).hexdigest()[:28]
-    return f"aegisvault/v4/zk/{blind_id}"
+    return f"kyberon/v4/zk/{blind_id}"
 
 
 class GlobalEncryptedChatSession:

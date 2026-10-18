@@ -41,8 +41,14 @@ _last_failed_time = 0.0
 def _get_user_secret_dir() -> str:
     """Returns a user-scoped directory outside the workspace for storing local cryptographic secrets."""
     base = os.environ.get("LOCALAPPDATA") or os.path.expanduser("~")
-    secret_dir = os.path.join(base, ".aegisvault_secrets")
+    secret_dir = os.path.join(base, ".kyberon_secrets")
+    legacy_dir = os.path.join(base, ".aegisvault_secrets")
     try:
+        if os.path.exists(legacy_dir) and not os.path.exists(secret_dir):
+            try:
+                os.rename(legacy_dir, secret_dir)
+            except Exception:
+                secret_dir = legacy_dir
         os.makedirs(secret_dir, exist_ok=True)
         return secret_dir
     except Exception:

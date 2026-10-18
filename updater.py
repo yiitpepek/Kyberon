@@ -1,5 +1,5 @@
 """
-AegisVault GitHub Auto-Updater (Supply-Chain Hardened)
+Kyberon GitHub Auto-Updater (Supply-Chain Hardened)
 Queries GitHub Releases API over verified TLS to detect new releases,
 enforces strict repository path pinning, full Windows PE header verification,
 and mandatory SHA-256 cryptographic digest validation (V-10).
@@ -20,7 +20,7 @@ import webbrowser
 from typing import Tuple, Optional
 
 CURRENT_VERSION = "4.1.0"
-DEFAULT_REPO = "yiitpepek/AegisVault"
+DEFAULT_REPO = "yiitpepek/Kyberon"
 ALLOWED_DOWNLOAD_HOSTS = {
     "github.com",
     "objects.githubusercontent.com",
@@ -106,7 +106,7 @@ def check_for_github_update(repo_slug: str = DEFAULT_REPO) -> Tuple[bool, str, s
     try:
         req = urllib.request.Request(
             url,
-            headers={"User-Agent": "AegisVault-Updater/4.1"}
+            headers={"User-Agent": "Kyberon-Updater/4.1"}
         )
         with urllib.request.urlopen(req, timeout=4.0, context=tls_ctx) as resp:
             if resp.status == 200:
@@ -143,7 +143,7 @@ def check_for_github_update(repo_slug: str = DEFAULT_REPO) -> Tuple[bool, str, s
                 False,
                 CURRENT_VERSION,
                 "",
-                f"GitHub deponuz erişilebilir ancak henüz bir 'Release' (Sürüm) paketi yayınlanmadı.\n\nGitHub üzerinde 'Create a new release' butonuna basarak v{CURRENT_VERSION} etiketini ve derlenen AegisVault.exe dosyasını yayınlayabilirsiniz."
+                f"GitHub deponuz erişilebilir ancak henüz bir 'Release' (Sürüm) paketi yayınlanmadı.\n\nGitHub üzerinde 'Create a new release' butonuna basarak v{CURRENT_VERSION} etiketini ve derlenen Kyberon.exe dosyasını yayınlayabilirsiniz."
             )
         return False, CURRENT_VERSION, "", f"GitHub bağlantı hatası (HTTP {e.code}): {e.reason}"
     except Exception as e:
@@ -154,7 +154,7 @@ def check_for_github_update(repo_slug: str = DEFAULT_REPO) -> Tuple[bool, str, s
 
 def apply_executable_update(download_url: str, expected_sha256: Optional[str] = None) -> bool:
     """
-    Download the updated AegisVault.exe over verified HTTPS, enforce mandatory 64-hex
+    Download the updated Kyberon.exe over verified HTTPS, enforce mandatory 64-hex
     SHA-256 verification and full Windows PE ('MZ' + 'PE\\0\\0') header validation (V-10),
     and atomically replace the running binary.
     Refuses execution (returns False) if expected_sha256 is missing or invalid.
@@ -172,8 +172,8 @@ def apply_executable_update(download_url: str, expected_sha256: Optional[str] = 
     expected_clean = expected_sha256.strip().lower()
     tls_ctx = ssl.create_default_context()
     try:
-        temp_exe = "AegisVault_update.exe"
-        req = urllib.request.Request(download_url, headers={"User-Agent": "AegisVault-Updater/4.1"})
+        temp_exe = "Kyberon_update.exe"
+        req = urllib.request.Request(download_url, headers={"User-Agent": "Kyberon-Updater/4.1"})
         with urllib.request.urlopen(req, timeout=20.0, context=tls_ctx) as resp:
             if not _is_trusted_https_url(resp.geturl()):
                 return False
@@ -195,10 +195,10 @@ def apply_executable_update(download_url: str, expected_sha256: Optional[str] = 
         if is_frozen:
             target_exe = sys.executable
         else:
-            target_exe = os.path.abspath("AegisVault.exe")
+            target_exe = os.path.abspath("Kyberon.exe")
 
         raw_name = os.path.basename(target_exe)
-        safe_target_name = re.sub(r'[^a-zA-Z0-9_.-]', '', raw_name) or "AegisVault.exe"
+        safe_target_name = re.sub(r'[^a-zA-Z0-9_.-]', '', raw_name) or "Kyberon.exe"
 
         batch_script = f"""@echo off
 timeout /t 2 /nobreak > nul
