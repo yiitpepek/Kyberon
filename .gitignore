@@ -10,12 +10,13 @@ vault_decoy.mvat
 audit_trail.json
 *.bat
 
-# PyInstaller & Derleme Artıkları (Sadece ana AegisVault.exe repoya dahil edilir)
+# PyInstaller & Derleme Artıkları (Sadece ana Kyberon.exe repoya dahil edilir)
 build/
 dist/
 *.spec
 *.exe
-!AegisVault.exe
+!Kyberon.exe
+Kyberon_update.exe
 AegisVault_update.exe
 
 # Python Cache
