@@ -11,6 +11,11 @@
 
 Built around **NIST SP 800-38D (AES-256-GCM)**, **RFC 7914 (`scrypt`)**, **Ed25519 (RFC 8032)**, **Fujisaki-Okamoto IND-CCA2 Post-Quantum Hybrid KEM (`X25519 + Ring-LWE`)**, and **Bitcoin BIP-38 / BIP-39**, Kyberon v4.1.0 incorporates comprehensive security hardening following an independent white-box cryptographic audit.
 
+> [!TIP]
+> **📦 Precompiled Standalone Executable (Windows x64):**  
+> No Python installation required. Download the verified single-file executable directly from the official **[Latest GitHub Release](https://github.com/yiitpepek/Kyberon/releases/latest)**.  
+> `SHA256 (Kyberon.exe): ba1d1eb8c427d09ad07132e6c39ae680cf39c0ef43f6bebc35c1d7aae778e924`
+
 ---
 
 ## 📑 Table of Contents
